@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sauce+One:wght@400;800&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Open Sauce One', sans-serif;
+  background-color: #f5f3f3;
+}
+
+.countdown-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f3f3;
+  z-index: 10;
+  padding: 0;
+}
+
+.countdown-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.event-title,
+.countdown-text {
+  width: fit-content;
+  max-width: 100%;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.event-title {
+  color: #72035d;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.countdown-text {
+  color: #000;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-top: 1rem;
+}
+
+.form-container {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  max-width: 580px;
+  margin-top: auto;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 278px;
+
+  input {
+    width: 100%;
+    height: 54px;
+    padding: 16px 12px;
+    border: 1px solid #757575;
+    border-radius: 4px;
+    font-family: 'Open Sauce One', sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    background: transparent;
+    outline: none;
+
+    &:focus {
+      border-color: #72035d;
+    }
+  }
+
+  label {
+    position: absolute;
+    left: 12px;
+    top: -7px;
+    background-color: #f5f3f3;
+    padding: 0 2px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #757575;
+    z-index: 1;
+  }
+
+  .label-background {
+    position: absolute;
+    left: 2px;
+    top: -7px;
+    width: 40px;
+    height: 14px;
+    background: #f5f3f3;
+  }
+}
+
+/* Portrait - Small Screens */
+@media (max-width: 768px) {
+  .countdown-wrapper {
+    padding: 0;
+  }
+
+  .countdown-content {
+    width: 100%;
+  }
+
+  .event-title,
+  .countdown-text {
+    font-size: 0;
+  }
+
+  .form-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 150px;
+  }
+
+  .input-wrapper {
+    width: 278px;
+  }
+}
+
+/* Landscape Mode */
+@media (min-width: 769px) {
+  .form-container {
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .event-title {
+    font-size: min(64px, 6vw);
+  }
+
+  .countdown-text,
+  .instructional-text {
+    font-size: min(48px, 5vw);
+  }
+}
+
+input[type='date'] {
+  position: relative;
+
+  &::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+  }
+
+  &::-webkit-datetime-edit {
+    color: #757575;
+  }
+
+  &::-webkit-datetime-edit-fields-wrapper {
+    color: #000;
+  }
+}
+
+input[type='date']::-webkit-datetime-edit {
+  text-transform: uppercase;
+}
+
+input[type='date']::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type='date'] {
+  &::-webkit-calendar-picker-indicator {
+    margin-left: 0;
+    margin-right: 8px;
+  }
+
+  &::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+
+  &::-webkit-datetime-edit-text {
+    padding: 0 4px;
+  }
+
+  &::-webkit-datetime-edit-year-field,
+  &::-webkit-datetime-edit-month-field,
+  &::-webkit-datetime-edit-day-field {
+    padding: 0;
+  }
+
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  &::-webkit-clear-button {
+    display: none;
+  }
+}
+
+// Force LTR direction for date input to maintain yyyy-mm-dd format
+input[type='date'] {
+  direction: ltr;
+}
+
+// Hide the default format display
+input[type='date']::-webkit-datetime-edit {
+  display: inline-block;
+}
+
+// Add this to your existing styles
+input[type='date'] {
+  &::-webkit-calendar-picker-indicator {
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
+
+  &::-webkit-datetime-edit {
+    padding: 0;
+    text-transform: none;
+  }
+
+  &::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+    text-transform: none;
+  }
+
+  &::-webkit-datetime-edit-text {
+    padding: 0;
+    text-transform: none;
+  }
+
+  &::-webkit-datetime-edit-year-field {
+    padding: 0;
+    text-transform: none;
+    order: 1;
+  }
+
+  &::-webkit-datetime-edit-month-field {
+    padding: 0;
+    text-transform: none;
+    order: 2;
+  }
+
+  &::-webkit-datetime-edit-day-field {
+    padding: 0;
+    text-transform: none;
+    order: 3;
+  }
+}
+
+// Force the date input to use LTR and specific format
+input[type='date'] {
+  direction: ltr !important;
+  unicode-bidi: isolate;
+  text-align: left;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+// Hide spinner buttons
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Force the date format display
+input[type='date']::-webkit-datetime-edit {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  padding: 0 !important;
+}

@@ -1,0 +1,13 @@
+<div class="input-wrapper">
+  <label [for]="id">{{ label }}</label>
+  <input
+    [id]="id"
+    type="text"
+    [value]="value"
+    (input)="handleInput($event)"
+    (blur)="handleBlur()"
+    [attr.aria-label]="label"
+    placeholder="YYYY-MM-DD"
+    maxlength="10"
+  />
+</div>

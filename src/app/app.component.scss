@@ -1,0 +1,12 @@
+main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  h1 {
+    font-size: 6rem;
+  }
+}
