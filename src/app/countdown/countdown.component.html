@@ -1,12 +1,9 @@
 <div class="countdown-wrapper" [ngClass]="{ landscape: isLandscape, portrait: !isLandscape }">
   <div class="countdown-content">
     <h1 class="event-title">Time till {{ eventName || 'your event' }}</h1>
-    <p class="countdown-text" *ngIf="isCountdownValid; else instructionalMessage">
-      {{ countdown }}
+    <p class="countdown-text">
+      {{ isCountdownValid ? countdown : 'Fill in event and date to start the countdown!' }}
     </p>
-    <ng-template #instructionalMessage>
-      <p class="instructional-text">Fill in event and date to start the countdown!</p>
-    </ng-template>
     <div class="form-container">
       <div class="input-wrapper">
         <label for="event-name">Title</label>

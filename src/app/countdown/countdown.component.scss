@@ -125,7 +125,7 @@ body {
 
   .event-title,
   .countdown-text {
-    font-size: 0;
+    font-size: min(48px, 8vw);
   }
 
   .form-container {

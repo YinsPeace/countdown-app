@@ -1,6 +1,6 @@
-import { Component, Input, forwardRef } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms'
+import { Component, Input, forwardRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/forms';
 
 /**
  * Custom form control component for date input handling.
@@ -23,25 +23,25 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormsModule } from '@angular/f
 })
 export class DateInputComponent implements ControlValueAccessor {
   /** Input field identifier */
-  @Input() id: string = ''
+  @Input() id: string = '';
 
   /** Label text for the input field */
-  @Input() label: string = ''
+  @Input() label: string = '';
 
   /** Minimum allowed date (YYYY-MM-DD format) */
-  @Input() min: string = ''
+  @Input() min: string = '';
 
   /** Current input value */
-  value: string = ''
+  value: string = '';
 
   /** Disabled state of the input */
-  disabled: boolean = false
+  disabled: boolean = false;
 
   /** Change callback function */
-  onChange = (_: any) => {}
+  onChange = (_: any) => {};
 
   /** Touch callback function */
-  onTouched = () => {}
+  onTouched = () => {};
 
   /**
    * Handles input changes and formats the date.
@@ -50,31 +50,31 @@ export class DateInputComponent implements ControlValueAccessor {
    * @param event - Input event containing the new value
    */
   handleInput(event: Event): void {
-    const input = event.target as HTMLInputElement
-    let newValue = input.value.replace(/\D/g, '')
+    const input = event.target as HTMLInputElement;
+    let newValue = input.value.replace(/\D/g, '');
 
     if (newValue.length > 0) {
       // Format as YYYY-MM-DD
-      const year = newValue.slice(0, 4)
-      const month = newValue.slice(4, 6)
-      const day = newValue.slice(6, 8)
+      const year = newValue.slice(0, 4);
+      const month = newValue.slice(4, 6);
+      const day = newValue.slice(6, 8);
 
-      let formatted = year
-      if (month) formatted += '-' + month
-      if (day) formatted += '-' + day
+      let formatted = year;
+      if (month) formatted += '-' + month;
+      if (day) formatted += '-' + day;
 
-      input.value = formatted
+      input.value = formatted;
 
       if (newValue.length >= 8 && this.isValidDate(formatted)) {
-        this.value = formatted
-        this.onChange(this.value)
+        this.value = formatted;
+        this.onChange(this.value);
       } else if (newValue.length < 8) {
-        this.value = formatted
-        this.onChange('') // Don't emit until we have a complete valid date
+        this.value = formatted;
+        this.onChange(''); // Don't emit until we have a complete valid date
       }
     } else {
-      this.value = ''
-      this.onChange('')
+      this.value = '';
+      this.onChange('');
     }
   }
 
@@ -83,10 +83,10 @@ export class DateInputComponent implements ControlValueAccessor {
    * Clears invalid dates and notifies form of touch state.
    */
   handleBlur(): void {
-    this.onTouched()
+    this.onTouched();
     if (!this.isValidDate(this.value)) {
-      this.value = ''
-      this.onChange('')
+      this.value = '';
+      this.onChange('');
     }
   }
 
@@ -98,15 +98,15 @@ export class DateInputComponent implements ControlValueAccessor {
    * @returns boolean indicating if date is valid
    */
   private isValidDate(dateStr: string): boolean {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return false
-    const [year, month, day] = dateStr.split('-').map(Number)
-    const date = new Date(year, month - 1, day)
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return false;
+    const [year, month, day] = dateStr.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
     return (
       date.getFullYear() === year &&
       date.getMonth() === month - 1 &&
       date.getDate() === day &&
       (!this.min || dateStr >= this.min)
-    )
+    );
   }
 
   /**
@@ -115,7 +115,7 @@ export class DateInputComponent implements ControlValueAccessor {
    * @param value - New value from form control
    */
   writeValue(value: string | null): void {
-    this.value = value || ''
+    this.value = value || '';
   }
 
   /**
@@ -124,7 +124,7 @@ export class DateInputComponent implements ControlValueAccessor {
    * @param fn - Callback function
    */
   registerOnChange(fn: any): void {
-    this.onChange = fn
+    this.onChange = fn;
   }
 
   /**
@@ -133,7 +133,7 @@ export class DateInputComponent implements ControlValueAccessor {
    * @param fn - Callback function
    */
   registerOnTouched(fn: any): void {
-    this.onTouched = fn
+    this.onTouched = fn;
   }
 
   /**
@@ -142,6 +142,6 @@ export class DateInputComponent implements ControlValueAccessor {
    * @param isDisabled - New disabled state
    */
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled
+    this.disabled = isDisabled;
   }
 }

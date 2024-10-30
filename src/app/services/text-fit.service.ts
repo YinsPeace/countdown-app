@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
 /**
  * Service responsible for calculating optimal font sizes to fit text within containers.
@@ -22,14 +22,14 @@ export class TextFitService {
     container: HTMLElement,
     elements: HTMLElement[],
     options: {
-      minSize?: number
-      maxSize?: number
-      padding?: number
-    } = {},
+      minSize?: number;
+      maxSize?: number;
+      padding?: number;
+    } = {}
   ): number {
-    const { minSize = 1, maxSize = 200, padding = 32 } = options
+    const { minSize = 1, maxSize = 200, padding = 32 } = options;
 
-    const containerWidth = container.clientWidth - padding
+    const containerWidth = container.clientWidth - padding;
 
     /**
      * Uses binary search to find the largest font size that fits within container
@@ -37,27 +37,27 @@ export class TextFitService {
      * @returns Optimal font size for the element
      */
     const findOptimalFontSize = (element: HTMLElement): number => {
-      let min = minSize
-      let max = maxSize
-      let optimal = min
+      let min = minSize;
+      let max = maxSize;
+      let optimal = min;
 
       while (min <= max) {
-        const mid = Math.floor((min + max) / 2)
-        element.style.fontSize = `${mid}px`
+        const mid = Math.floor((min + max) / 2);
+        element.style.fontSize = `${mid}px`;
 
         if (element.scrollWidth <= containerWidth) {
-          optimal = mid
-          min = mid + 1
+          optimal = mid;
+          min = mid + 1;
         } else {
-          max = mid - 1
+          max = mid - 1;
         }
       }
 
-      return optimal
-    }
+      return optimal;
+    };
 
     // Find the smallest optimal size among all elements
-    const sizes = elements.map(element => findOptimalFontSize(element))
-    return Math.min(...sizes)
+    const sizes = elements.map(element => findOptimalFontSize(element));
+    return Math.min(...sizes);
   }
 }

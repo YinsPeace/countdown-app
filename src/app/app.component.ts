@@ -1,6 +1,6 @@
-import { Component } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
-import { CountdownComponent } from './countdown/countdown.component'
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { CountdownComponent } from './countdown/countdown.component';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { CountdownComponent } from './countdown/countdown.component'
   template: '<app-countdown />',
 })
 export class AppComponent {
-  title = 'Countdown App'
+  title = 'Countdown App';
 }
